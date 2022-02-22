@@ -6,7 +6,10 @@ function.zip: update-ddns-record
 update-ddns-record: main.go
 	go build
 
-update: function.zip
-	aws-vault exec lars -- aws lambda update-function-code \
+update: .lastupdate
+
+.lastupdate: function.zip
+	aws lambda update-function-code \
 		--function-name update-ddns-record \
 		--zip-file fileb://function.zip
+	touch $@
