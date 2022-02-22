@@ -1,7 +1,8 @@
-all: function.zip
+all: update-ddns-record
 
+.INTERMEDIATE: function.zip
 function.zip: update-ddns-record
-	rm -f $@; zip $@ $^
+	zip $@ $^
 
 update-ddns-record: main.go
 	go build
@@ -15,4 +16,4 @@ update: .lastupdate
 	touch $@
 
 clean:
-	rm -f update-ddns-record
+	rm -f update-ddns-record function.zip .lastupdate
