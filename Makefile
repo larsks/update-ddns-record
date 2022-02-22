@@ -13,3 +13,6 @@ update: .lastupdate
 		--function-name update-ddns-record \
 		--zip-file fileb://function.zip
 	touch $@
+
+clean:
+	rm -f update-ddns-record
