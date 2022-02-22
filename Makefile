@@ -1,10 +1,12 @@
+GOFILES = $(wildcard *.go)
+
 all: update-ddns-record
 
 .INTERMEDIATE: function.zip
 function.zip: update-ddns-record
 	zip $@ $^
 
-update-ddns-record: main.go
+update-ddns-record: $(GOFILES)
 	go build
 
 update: .lastupdate
