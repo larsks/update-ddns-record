@@ -70,7 +70,7 @@ func HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (
 	return NewResponse("success",
 		fmt.Sprintf("Updated address for %s", hostName),
 		WithHostInfo(hostName, clientAddress),
-		WithApiResult(resp.GoString()),
+		WithApiResult(resp.String()),
 	).String(), nil
 }
 
